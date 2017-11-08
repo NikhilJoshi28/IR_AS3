@@ -45,7 +45,6 @@ for i in range(0,5000):
 
 error1=0
 error2=0
-error3=0
 for i in range(4000,5000):
 	#print(i)
 	for j in range(50,100):
