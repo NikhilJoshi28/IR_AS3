@@ -23,7 +23,8 @@ Below is the list of implemented functionalities in this rank retrival model. wh
     1. Install pip: sudo apt-get install python-pip
     2. Install Numpy : sudo pip install -U numpy
     3. Install pandas : sudo pip install pandas
-    4. Open up a Python prompt by running the following:
+    
+    *Open up a Python prompt by running the following:
 
 		python
 
