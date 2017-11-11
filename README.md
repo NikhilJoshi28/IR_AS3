@@ -20,10 +20,10 @@ Below is the list of implemented functionalities in this rank retrival model. wh
 
  * [python-Numpy, Pandas](https://pandas.pydata.org/pandas-docs/stable/install.html) 
  
-    *Install pip: sudo apt-get install python-pip
-    *Install Numpy : sudo pip install -U numpy
-    *Install pandas : sudo pip install pandas
-    *Open up a Python prompt by running the following:
+    1. Install pip: sudo apt-get install python-pip
+    2. Install Numpy : sudo pip install -U numpy
+    3. Install pandas : sudo pip install pandas
+    4. Open up a Python prompt by running the following:
 
 		python
 
@@ -36,8 +36,8 @@ Below is the list of implemented functionalities in this rank retrival model. wh
 
  * [python-xlrd module](https://www.loomio.org/) - 
  	
- 	*Install xlrd: pip install xlrd
- 	*Install xlwt: pip install xlwt
+ 	**Install xlrd: pip install xlrd
+ 	**Install xlwt: pip install xlwt
  
  
  
