@@ -24,7 +24,7 @@ Below is the list of implemented functionalities in this rank retrival model. wh
     2. Install Numpy : sudo pip install -U numpy
     3. Install pandas : sudo pip install pandas
     
-    *Open up a Python prompt by running the following:
+    *Check for istallation by Opening up a Python prompt by running the following:
 
 		python
 
@@ -37,8 +37,8 @@ Below is the list of implemented functionalities in this rank retrival model. wh
 
  * [python-xlrd module](https://www.loomio.org/) - 
  	
- 	**Install xlrd: pip install xlrd
- 	**Install xlwt: pip install xlwt
+ 	1. Install xlrd: pip install xlrd
+ 	2. Install xlwt: pip install xlwt
  
  
  
@@ -48,7 +48,7 @@ Below is the list of implemented functionalities in this rank retrival model. wh
  
 ## Run:
  * nevigate to IR_AS3 directory.
- * change path to the dataset in file to run 
+ * change path to the dataset in files to run 
  * use python3 filename. 
  
 ## Project Extention
