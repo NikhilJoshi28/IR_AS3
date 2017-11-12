@@ -27,7 +27,7 @@ class SVD:
 		"""determining the eigen values and eigen vectors corresponding 
 						to the matrix obtained"""
 		self.rank_u = linalg.matrix_rank(U_calc)
-		self.eigen_values_u,self.eigenvectors_u = linalg.eig(U_calc)
+		self.eigen_values_u,self.eigenvectors_u = linalg.eigh(U_calc)
 		self.num_u = len(self.eigen_values_u)
 
 
@@ -63,7 +63,7 @@ class SVD:
 		"""determining the eigen values and eigen vectors corresponding 
 						to the matrix obtained"""
 		self.rank_v = linalg.matrix_rank(V_calc)
-		self.eigen_values_v,self.eigenvectors_v = linalg.eig(V_calc)
+		self.eigen_values_v,self.eigenvectors_v = linalg.eigh(V_calc)
 		self.num_v = len(self.eigen_values_v)
 
 		"""sorting the eigen values and corresponding eigenvectors"""
@@ -94,7 +94,7 @@ class SVD:
 	def Sigma(self):
 		"""sigma calculation for the given matrix by taking the square 
 					root of the eigen values"""
-		if self.rank_u > self.rank_v:
+		if self.rank_u < self.rank_v:
 			self.sigma = np.diag(np.sqrt(self.eig_vals_sorted_u))
 		else:
 			self.sigma = np.diag(np.sqrt(self.eig_vals_sorted_v))
@@ -109,26 +109,29 @@ class SVD:
 			of the squares of the retained values should be 90% of 
 			the sum of the squares of all the singular values"""
 
+		print "inside"
 		sum_squares_singular_vals = 0
-		for i in range(0,max(self.rank_u,self.rank_v)):
+		for i in range(0,min(self.rank_u,self.rank_v)):
 			sum_squares_singular_vals = sum_squares_singular_vals + self.sigma[i,i]*self.sigma[i,i]
 
-		idx = max(self.rank_u,self.rank_v)
+		idx = min(self.rank_u,self.rank_v)
 		least_energy_val = self.sigma[idx-1,idx-1]
 		
-		if ((least_energy_val*least_energy_val)/(sum_squares_singular_vals))>0.9:
+		if ((least_energy_val*least_energy_val)/(sum_squares_singular_vals))<0.1:
 
 			"""changing the U matrix i.e. deleting the last column of 
 				             the U matrix"""
-			self.U = self.U[:,0:self.rank_u-1]
+			self.U = self.U[:,0:(self.rank_u-1)]
+			print "#"
+			print self.U
 
 			"""changing the V matrix i.e. deleting the last column of 
 				             the U matrix"""
-			self.V = self.V[0:self.rank_v-1,:]
+			self.V = self.V[0:(self.rank_v-1),:]
 
 			"""changing the sigma matrix i.e. deleting the last row as
 			               well as last column"""
-			self.sigma = self.sigma[0:idx-1,0:idx-1]
+			self.sigma = self.sigma[0:(idx-1),0:(idx-1)]
 
 		else:
 			print "reduction is not to be done"
@@ -142,7 +145,8 @@ class ErrorEstimation:
 		"""obtain the approximated matrix by multiplication of U,Sigma 
 								and V"""
 		self.approx = np.dot(np.dot(U,Sigma),V)
-
+		print "approx"
+		print self.approx
 	def RMSE(self, original):
 
 		"""computing the root mean squared errors by taking the square root
@@ -221,13 +225,16 @@ if __name__=='__main__':
 	print "Enter 1 if required"
 
 	decision_var = input()
-	if input==1:
+	if decision_var==1:
 		svd.DimentionReduction()
 
-	error = ErrorEstimation(svd.U,svd.sigma,svd.V,utility)
+	error = ErrorEstimation(svd.U,svd.sigma,svd.V)
 	error.RMSE(utility)
+	print "rmse"
 	print error.Rmse
+
 	error.TopK(4, utility)
+	print "TopK"
 	print error.topk_Rmse
 
 	error.SpearmansCorrelation(utility)

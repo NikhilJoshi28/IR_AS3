@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import numpy.linalg as linalg
 import math
-from svd1 import SVD,ErrorEstimation
+from svd import SVD,ErrorEstimation
 
 class CUR():
 	def __init__(self, file):
@@ -124,8 +124,8 @@ class CUR():
 		error.RMSE(self.utility)
 		print error.Rmse
 
-		print "TopK",
 		error.TopK(k,self.utility)
+		print "TopK",
 		print error.TopK
 
 		print "SpearmansCorrelation",
