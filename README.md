@@ -1,6 +1,6 @@
-# English or Arabic Article Search System 
+# Recommendor System
 
-Below is the list of implemented functionalities in this rank retrival model. which can be multiporposely used to search data from given corpus in both english in arabic.
+Below is the list of the algorithms used to implementrecommendor systems which have been implemented which include Collaborative filtering, Singular Value Decomposition and CUR.
 
 ## Functionality Implemented
 
@@ -8,8 +8,8 @@ Below is the list of implemented functionalities in this rank retrival model. wh
   2. Collaborative Filtering using global baseline approach.
   3. SVD
   4. SVD with 90% retained energy
-  5. CUR
-  6. CUR with 90% retained energy
+  5. CUR with sampling of rows and columns with replacement
+  6. CUR with sampling of rows and columns without replacement
 
 
 # The Dataset 
@@ -51,5 +51,3 @@ Below is the list of implemented functionalities in this rank retrival model. wh
  * change path to the dataset in files to run 
  * use python3 filename. 
  
-## Project Extention
- * 
